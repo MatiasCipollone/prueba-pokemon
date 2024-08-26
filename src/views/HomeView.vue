@@ -1,13 +1,15 @@
 <template>
-  <img src="@/assets/maskGroup.png" alt="Pokémon" />
-  <h1 class="title">Welcome to Pokédex</h1>
-  <p class="info">
-    The digital encyclopedia created by Professor Oak is an invaluable tool to
-    Trainers in the Pokémon world
-  </p>
-  <button class="button" @click="goToList">
-    <p class="buttonText">Get started</p>
-  </button>
+  <div class="homeContainer">
+    <img src="@/assets/maskGroup.png" alt="Pokémon" />
+    <h1 class="title">Welcome to Pokédex</h1>
+    <p class="info">
+      The digital encyclopedia created by Professor Oak is an invaluable tool to
+      Trainers in the Pokémon world
+    </p>
+    <button class="button" @click="goToList">
+      <p class="buttonText">Get started</p>
+    </button>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -21,6 +23,16 @@ const goToList = () => {
 </script>
 
 <style scoped lang="scss">
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: $background;
+  gap: 20px;
+}
 .title {
   color: $textPrimary;
   font-size: 2rem;
@@ -42,6 +54,7 @@ const goToList = () => {
   &:hover {
     background-color: darken($redHover, 10%);
   }
+  height: 3rem;
 }
 
 .buttonText {

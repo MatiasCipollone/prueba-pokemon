@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="containerApp">
     <router-view />
   </div>
 </template>
@@ -13,18 +13,22 @@
   text-align: center;
   color: #2c3e50;
   display: flex;
-  height: 100vh;
-  width: 100vw;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: $background;
+  padding-top: 20px;
 }
 
-.container {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.containerApp {
   display: flex;
   flex: 1;
-
   justify-content: center;
   align-items: center;
   flex-direction: column;
