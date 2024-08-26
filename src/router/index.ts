@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import ListView from "@/views/ListView.vue";
-import LoadingView from "@/views/LoadingView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -13,11 +12,6 @@ const routes: Array<RouteRecordRaw> = [
     path: "/list",
     name: "list",
     component: ListView,
-  },
-  {
-    path: "/loading",
-    name: "loading",
-    component: LoadingView,
   },
 ];
 

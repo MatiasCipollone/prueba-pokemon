@@ -5,6 +5,9 @@ export const useLoaderStore = defineStore({
   state: () => ({
     loading: false,
   }),
+  getters: {
+    isLoading: (state) => state.loading,
+  },
   actions: {
     setLoading(loading: boolean) {
       this.loading = loading;
