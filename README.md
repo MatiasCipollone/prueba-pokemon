@@ -47,12 +47,12 @@ Para poner en marcha el proyecto, sigue estos pasos:
    ```bash
    git clone https://github.com/tu-usuario/prueba-pokemon.git
    ```
-   2. **_Instala las dependencias_**
+2. **_Instala las dependencias_**
    ```bash
    cd prueba-pokemon
    npm install
    ```
-   3. **_Inicia el servidor de desarrollo_**
+3. **_Inicia el servidor de desarrollo_**
    ```bash
     npm run dev
    ```
