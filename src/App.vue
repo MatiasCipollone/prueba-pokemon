@@ -18,6 +18,7 @@
   flex-direction: column;
   background-color: $background;
   padding-top: 20px;
+  height: 100%;
 }
 
 * {

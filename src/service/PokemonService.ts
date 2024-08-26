@@ -20,7 +20,9 @@ class PokemonService {
 
   async fetchPokemons(): Promise<void> {
     try {
-      const response = await fetch("https://pokeapi.co/api/v2/pokemon");
+      const response = await fetch(
+        "https://pokeapi.co/api/v2/pokemon?limit=151"
+      );
       const data = await response.json();
       this.pokemons.value = data.results;
     } catch (error) {

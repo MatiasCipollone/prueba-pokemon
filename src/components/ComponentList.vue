@@ -7,7 +7,14 @@
           props.pokemonName!.slice(1)
         }}
       </h3>
-      <button>A</button>
+      <button class="star-button" @click.stop="toggleFavorite">⭐</button>
+      <button
+        v-if="isFavorite(props.pokemonName!)"
+        class="star-button"
+        @click.stop="toggleFavorite"
+      >
+        🗑
+      </button>
     </div>
     <ComponentModal
       :pokemonName="props.pokemonName"
@@ -20,20 +27,31 @@
 <script setup lang="ts">
 import { defineProps, ref } from "vue";
 import ComponentModal from "@/components/ComponentModal.vue";
+import { useFavoriteStore } from "@/store/favorite";
 
 const props = defineProps({
   pokemonName: String,
 });
 
 const isModalVisible = ref(false);
+const { addFavorite, removeFavorite, isFavorite } = useFavoriteStore();
 
-const openModal = async () => {
+const openModal = () => {
   if (props.pokemonName === undefined) return;
   isModalVisible.value = true;
 };
 
 const closeModal = () => {
   isModalVisible.value = false;
+};
+
+const toggleFavorite = () => {
+  if (props.pokemonName === undefined) return;
+  if (isFavorite(props.pokemonName)) {
+    removeFavorite(props.pokemonName);
+  } else {
+    addFavorite(props.pokemonName);
+  }
 };
 </script>
 
@@ -47,12 +65,36 @@ const closeModal = () => {
   transition: 0.3s;
   width: 100vw;
   max-width: 50rem;
+  position: relative;
   &:hover {
     background-color: $backgroundSecondaryHover;
   }
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.star-button {
+  background-color: #ccc;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:hover {
+    background-color: #bbb;
+  }
 }
 
 .item {
@@ -89,7 +131,7 @@ const closeModal = () => {
 
 @media (max-width: 768px) {
   .containerItem {
-    width: 100%;
+    width: 90vw;
     padding: 15px;
   }
 }
